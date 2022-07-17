@@ -8,8 +8,9 @@ import (
 func ExampleFindElement() {
 	var webDriver selenium.WebDriver
 	var err error
-	caps := selenium.Capabilities(map[string]interface{}{"browserName": "firefox"})
-	if webDriver, err = selenium.NewRemote(caps, "http://localhost:4444/wd/hub"); err != nil {
+	selenium.SetDebug(true)
+	caps := selenium.Capabilities{"browserName": "firefox"}
+	if webDriver, err = selenium.NewRemote(caps, "http://localhost:8999/wd/hub"); err != nil {
 		fmt.Printf("Failed to open session: %s\n", err)
 		return
 	}
